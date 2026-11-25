@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import ToConfirm from '../components/ToConfirm.astro';
+import { site } from '../site.config';
+import { url } from '../lib/url';
+---
+
+<Base title={`Safeguarding | ${site.name}`} description="How My Maths Mentor sessions are arranged and how children are kept safe.">
+  <section class="page-hero">
+    <div class="container container--narrow">
+      <span class="kicker">Keeping children safe</span>
+      <h1>Safeguarding</h1>
+    </div>
+  </section>
+  <div class="container container--narrow prose">
+    <ToConfirm>
+      <p>
+        This page is a framework only. Every arrangement below needs confirming, and only checks that have been verified
+        should be published.
+      </p>
+    </ToConfirm>
+
+    <p class="lede">
+      Your child’s safety and wellbeing come first. This page explains how sessions are arranged and what you can
+      expect.
+    </p>
+
+    <h2>Where sessions take place</h2>
+    <p>
+      Sessions take place in person at {site.owner}’s home in {site.locality}. The full address is shared privately
+      with parents and carers when sessions are arranged, and is never published online.
+    </p>
+
+    <h2>Checks and background</h2>
+    <p>
+      {site.owner} is an engineering lecturer in further education, with a degree in Mechanical Engineering.
+    </p>
+    <ToConfirm>
+      <p>DBS check: the type of check, when it was issued and whether it’s on the DBS Update Service.</p>
+    </ToConfirm>
+    <ToConfirm>
+      <p>Insurance: whether public liability (and any professional) insurance is in place.</p>
+    </ToConfirm>
+
+    <h2>Parents and carers</h2>
+    <ToConfirm>
+      <p>
+        Whether a parent or carer stays during sessions or nearby, how drop-off and collection work, and what happens if
+        a child is unwell or upset during a session.
+      </p>
+    </ToConfirm>
+
+    <h2>Photos and personal information</h2>
+    <p>
+      Photos of children are never taken or shared without permission from a parent or carer. The enquiry form doesn’t
+      ask for children’s names, dates of birth or medical details.
+    </p>
+
+    <h2>Raising a concern</h2>
+    <ToConfirm>
+      <p>
+        How parents can raise a concern, the safeguarding training {site.owner} has completed, and how a concern about a
+        child would be reported.
+      </p>
+    </ToConfirm>
+    <p>If you think a child is in immediate danger, call 999.</p>
+
+    <p><a href={url('/')}>Back to the home page</a></p>
+  </div>
+</Base>

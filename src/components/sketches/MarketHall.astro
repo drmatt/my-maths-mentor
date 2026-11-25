@@ -1,0 +1,62 @@
+---
+import Sketch from '../Sketch.astro';
+import { photo } from '../../lib/photos';
+
+// Illustration of Stockport Market Hall's glass and iron roof (viewBox 0 0 400 320).
+const columns = [56, 128, 200, 272, 344];
+const bays = columns.slice(0, -1).map((x, i) => [x + 7, columns[i + 1] - 7] as const);
+const awning = ([x1, x2]: readonly [number, number]) => {
+  const n = 4;
+  const w = (x2 - x1) / n;
+  let d = `M${x1} 212H${x2}V226`;
+  for (let i = 0; i < n; i++) d += `a${w / 2} ${w / 2} 0 0 1 ${-w} 0`;
+  return `${d}Z`;
+};
+const fruit = bays.flatMap(([x1, x2], b) =>
+  [0, 1, 2, 3].map((i) => ({ cx: x1 + 10 + i * ((x2 - x1 - 20) / 3), cls: ['f-coral', 'f-sun', 'f-lilac'][(i + b) % 3] })),
+);
+const glazing = Array.from({ length: 15 }, (_, i) => 56 + i * 20);
+---
+
+<Sketch
+  label="Sketch of Stockport Market Hall's glass roof. One triangle in the iron roof truss is highlighted with angles a, b and c, and the note a plus b plus c equals 180 degrees."
+  viewBox="0 0 400 320"
+  photo={photo('market-hall')}
+  tilt={-1}
+  todo="photo"
+>
+  <g slot="art">
+    <defs>
+      <clipPath id="mh-roof">
+        <path d="M36 176L200 84L364 176Z"></path>
+      </clipPath>
+    </defs>
+    <path d="M0 292H400" class="ink"></path>
+    <path d="M36 176L200 84L364 176Z" class="f-lilac"></path>
+    <g clip-path="url(#mh-roof)">
+      {glazing.map((x) => <path d={`M${x} 80V176`} class="s-cream" opacity="0.65" />)}
+    </g>
+    <path d="M36 176L200 84L364 176Z" fill="none" class="s-teal"></path>
+    <path d="M200 84V176M200 176L118 130M200 176L282 130M118 130V176M282 130V176" class="ink"></path>
+    <rect x="28" y="176" width="344" height="10" rx="2" class="f-teal"></rect>
+    {columns.map((x) => <path d={`M${x} 186V292`} class="ink" style="stroke-width:5" />)}
+    {columns.map((x) => <rect x={x - 7} y="186" width="14" height="6" rx="1" class="f-teal" />)}
+    {bays.map((bay, i) => <path d={awning(bay)} class:list={[i % 2 ? 'f-sun' : 'f-coral', 's-teal s-thin']} />)}
+    {bays.map(([x1, x2]) => <rect x={x1} y="254" width={x2 - x1} height="38" class="f-sun-tint s-teal s-thin" />)}
+    {fruit.map(({ cx, cls }) => <circle cx={cx} cy="249" r="5" class:list={[cls, 's-teal']} style="stroke-width:1.5" />)}
+  </g>
+  <g slot="notes">
+    <path d="M200 84L118 130L200 176Z" class="f-sun fade" opacity="0.8" style="--d:.9s"></path>
+    <path d="M200 84L118 130L200 176Z" class="ink draw" pathLength="1" style="--d:.5s;stroke-width:3.5"></path>
+    <text x="188" y="116" class="hand fade" font-size="22" style="--d:1.4s">a</text>
+    <text x="136" y="139" class="hand fade" font-size="22" style="--d:1.5s">b</text>
+    <text x="184" y="169" class="hand fade" font-size="22" style="--d:1.6s">c</text>
+
+    <text x="18" y="40" class="hand fade" font-size="31" style="--d:1.8s">a + b + c = 180°</text>
+    <text x="20" y="66" class="hand hand--accent fade" font-size="19" style="--d:2s">triangles keep the roof rigid</text>
+    <path d="M110 76C132 86 148 98 162 114" class="ink ink--thin draw" pathLength="1" style="--d:2.1s"></path>
+    <path d="M152 112l10 3-1-10" class="ink ink--thin fade" style="--d:2.6s"></path>
+
+    <text x="14" y="313" class="hand fade" font-size="19" style="--d:.3s">Stockport Market Hall</text>
+  </g>
+</Sketch>

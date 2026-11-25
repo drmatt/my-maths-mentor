@@ -1,0 +1,30 @@
+---
+import { site } from '../../site.config';
+import { url } from '../../lib/url';
+import Viaduct from '../sketches/Viaduct.astro';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow">{site.strapline}</p>
+      <h1 id="hero-title">Helping children find their <span class="hl">confidence</span> in maths again.</h1>
+      <p class="lede">
+        Personal, patient maths mentoring in {site.locality}. Building strong foundations, developing understanding and
+        helping your child realise what they’re capable of.
+      </p>
+      <div class="hero__actions">
+        <a class="btn" href={url('/#enquire')}>Let’s have a chat <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <p class="price-note"><strong>£{site.price}</strong> per hour</p>
+      </div>
+      <ul class="tags" aria-label="Who sessions are for">
+        <li class="tag">Years 7, 8 &amp; 9</li>
+        <li class="tag">Foundation maths</li>
+        <li class="tag">Home education</li>
+      </ul>
+    </div>
+    <div class="hero__art">
+      <Viaduct eager />
+    </div>
+  </div>
+</section>

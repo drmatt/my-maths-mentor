@@ -1,0 +1,68 @@
+---
+/**
+ * A sketchbook card: an illustrated drawing (or a real photo, once one is added)
+ * with hand-drawn maths notes layered on top. Both layers share one viewBox.
+ */
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import ToConfirm from './ToConfirm.astro';
+
+interface Props {
+  label: string;
+  viewBox: string;
+  photo?: ImageMetadata;
+  tilt?: number;
+  tape?: boolean;
+  eager?: boolean;
+  sizes?: string;
+  /** Shown as a small "To confirm" tag while the illustration stands in for a photo. */
+  todo?: string;
+  class?: string;
+}
+
+const {
+  label,
+  viewBox,
+  photo,
+  tilt = 0,
+  tape = false,
+  eager = false,
+  sizes = '(min-width: 60rem) 40vw, 92vw',
+  todo,
+  class: className,
+} = Astro.props;
+
+const [, , width, height] = viewBox.split(/\s+/).map(Number);
+---
+
+<div class:list={['sketch-wrap', className, { 'sketch-wrap--tape': tape }]}>
+  <figure
+    class:list={['sketch', { 'sketch--photo': photo }]}
+    style={`--tilt:${tilt}deg;aspect-ratio:${width} / ${height}`}
+    role="img"
+    aria-label={label}
+  >
+    {
+      photo ? (
+        <Picture
+          src={photo}
+          alt=""
+          formats={['avif', 'webp']}
+          widths={[480, 800, 1200, 1600]}
+          sizes={sizes}
+          class="sketch__photo"
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : 'auto'}
+        />
+      ) : (
+        <svg class="sketch__art" viewBox={viewBox} aria-hidden="true" focusable="false">
+          <slot name="art" />
+        </svg>
+      )
+    }
+    <svg class="sketch__notes" viewBox={viewBox} aria-hidden="true" focusable="false">
+      <slot name="notes" />
+    </svg>
+  </figure>
+  {todo && !photo && <ToConfirm variant="tag">{todo}</ToConfirm>}
+</div>

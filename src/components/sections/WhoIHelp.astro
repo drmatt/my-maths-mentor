@@ -1,0 +1,85 @@
+---
+const groups = [
+  {
+    title: 'Building foundations',
+    text: 'Strengthening essential skills and filling the gaps in understanding that make everything else feel harder.',
+    icon: 'blocks',
+  },
+  {
+    title: 'Years 7, 8 & 9',
+    text: 'Support through the early years of secondary school, when new topics build quickly on old ones.',
+    icon: 'years',
+  },
+  {
+    title: 'Home education',
+    text: 'Daytime sessions tailored to your child’s learning journey and the way your family home educates.',
+    icon: 'home',
+  },
+  {
+    title: 'Learning at your own pace',
+    text: 'Gentle, flexible support for children who can’t currently attend school or feel overwhelmed by classroom learning.',
+    icon: 'path',
+  },
+];
+---
+
+<section class="section" id="who" aria-labelledby="who-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Who it’s for</span>
+      <h2 id="who-title">Who I help</h2>
+    </div>
+    <ul class="cards">
+      {
+        groups.map((group, i) => (
+          <li class="card" data-reveal style={`--rd:${i * 0.08}s`}>
+            <svg class="card__icon" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+              {group.icon === 'blocks' && (
+                <g stroke="#244B52" stroke-width="2.5" stroke-linejoin="round">
+                  <rect x="6" y="34" width="20" height="16" rx="3" fill="#F6CD58" />
+                  <rect x="30" y="34" width="20" height="16" rx="3" fill="#F29481" />
+                  <rect x="18" y="16" width="20" height="16" rx="3" fill="#B5A5E4" />
+                  <circle cx="28" cy="8" r="4" fill="#FFFDF7" />
+                </g>
+              )}
+              {group.icon === 'years' && (
+                <g stroke="#244B52" stroke-width="2.5" stroke-linejoin="round">
+                  <rect x="6" y="32" width="12" height="18" rx="3" fill="#F6CD58" />
+                  <rect x="22" y="22" width="12" height="28" rx="3" fill="#F29481" />
+                  <rect x="38" y="10" width="12" height="40" rx="3" fill="#B5A5E4" />
+                </g>
+              )}
+              {group.icon === 'home' && (
+                <g stroke="#244B52" stroke-width="2.5" stroke-linejoin="round">
+                  <circle cx="44" cy="12" r="7" fill="#F6CD58" />
+                  <path d="M6 28L26 12L46 28V50H6Z" fill="#FCE5DF" />
+                  <rect x="20" y="34" width="12" height="16" rx="2" fill="#F29481" />
+                </g>
+              )}
+              {group.icon === 'path' && (
+                <g stroke="#244B52" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M8 46C22 46 16 30 28 30S36 14 46 12" fill="none" stroke-dasharray="4 5" />
+                  <circle cx="8" cy="46" r="5" fill="#B5A5E4" />
+                  <circle cx="46" cy="12" r="6" fill="#F6CD58" />
+                </g>
+              )}
+            </svg>
+            <h3>{group.title}</h3>
+            <p>{group.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="scope-note" data-reveal>
+      <svg viewBox="0 0 28 28" aria-hidden="true" focusable="false">
+        <circle cx="14" cy="14" r="12" fill="#F6CD58" stroke="#244B52" stroke-width="2"></circle>
+        <path d="M14 12.5V20" stroke="#244B52" stroke-width="2.5" stroke-linecap="round"></path>
+        <circle cx="14" cy="8.5" r="1.6" fill="#244B52"></circle>
+      </svg>
+      <p>
+        My Maths Mentor specialises in foundational maths and Key Stage 3. I do not provide GCSE or A-level exam
+        tutoring.
+      </p>
+    </div>
+  </div>
+</section>

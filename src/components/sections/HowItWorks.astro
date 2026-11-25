@@ -1,0 +1,44 @@
+---
+const steps = [
+  {
+    title: 'Let’s have a chat',
+    text: 'Tell me about your child: how they feel about maths, what they’ve found tricky and what you’d like to achieve.',
+    c: 'var(--sun)',
+  },
+  {
+    title: 'Find the right starting point',
+    text: 'We gently explore what your child already understands and where the gaps are. There’s no formal test.',
+    c: 'var(--coral)',
+  },
+  {
+    title: 'Build confidence together',
+    text: 'One-to-one sessions tailored to your child, moving at the pace that’s right for them.',
+    c: 'var(--lilac)',
+  },
+  {
+    title: 'Celebrate progress',
+    text: 'We recognise every achievement, big or small, and build the independence to keep going.',
+    c: 'var(--teal-tint)',
+  },
+];
+---
+
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Four simple steps</span>
+      <h2 id="how-title">How it works</h2>
+    </div>
+    <ol class="steps">
+      {
+        steps.map((step, i) => (
+          <li class="step" data-reveal style={`--rd:${i * 0.1}s;--c:${step.c}`}>
+            <span class="step__num" aria-hidden="true">{i + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

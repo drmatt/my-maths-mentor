@@ -1,0 +1,46 @@
+---
+import { site } from '../../site.config';
+import { url } from '../../lib/url';
+
+const included = [
+  'Individual, tailored one-to-one sessions',
+  `In person at Emma’s home in ${site.locality}`,
+  'Daytime availability',
+  'Home-educated children welcome',
+  'Foundational maths and Years 7, 8 & 9',
+];
+---
+
+<section class="section section--lilac section--grid" id="sessions" aria-labelledby="sessions-title">
+  <div class="container split split--center">
+    <div data-reveal>
+      <span class="kicker">Maths at your pace, not everyone else’s</span>
+      <h2 id="sessions-title">Sessions and pricing</h2>
+      <p>
+        Every session is one-to-one and planned around your child: what they already understand, what they find tricky
+        and the pace that suits them.
+      </p>
+      <p>
+        Sessions take place in person at my home in {site.locality}, with daytime availability for home-educated
+        children and children who aren’t currently attending school.
+      </p>
+    </div>
+    <div class="price-card" data-reveal style="--rd:.1s">
+      <p class="price"><span class="price__amount">£{site.price}</span><span class="price__unit">per hour</span></p>
+      <ul class="ticks">
+        {
+          included.map((item) => (
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="11" fill="#F6CD58" stroke="#244B52" stroke-width="1.5" />
+                <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#244B52" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn" href={url('/#enquire')}>Enquire about availability <span class="btn__arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

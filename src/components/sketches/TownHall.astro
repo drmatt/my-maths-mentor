@@ -1,0 +1,65 @@
+---
+import Sketch from '../Sketch.astro';
+import { photo } from '../../lib/photos';
+
+// Illustration of Stockport Town Hall's clock tower (viewBox 0 0 400 320).
+const archWindow = (x: number, y: number, w: number, h: number) =>
+  `M${x} ${y + h}V${y + w / 2}A${w / 2} ${w / 2} 0 0 1 ${x + w} ${y + w / 2}V${y + h}Z`;
+const wingWindows = [48, 74, 100, 126, 260, 286, 312, 338].flatMap((x) => [
+  archWindow(x, 218, 14, 20),
+  archWindow(x, 252, 14, 24),
+]);
+---
+
+<Sketch
+  label="Sketch of Stockport Town Hall with a dashed line of symmetry through the clock tower, and a close-up of the clock at 3 o'clock showing a 90 degree angle between the hands."
+  viewBox="0 0 400 320"
+  photo={photo('town-hall')}
+  tilt={1}
+  todo="photo"
+>
+  <g slot="art">
+    <path d="M0 292H400" class="ink"></path>
+    <rect x="34" y="198" width="116" height="94" class="f-sun-tint s-teal"></rect>
+    <rect x="250" y="198" width="116" height="94" class="f-sun-tint s-teal"></rect>
+    <path d="M30 198H154M246 198H370" class="ink"></path>
+    <path d={wingWindows.join('')} class="f-lilac s-teal s-thin"></path>
+    <rect x="150" y="178" width="100" height="114" class="f-sun-tint s-teal"></rect>
+    <rect x="144" y="170" width="112" height="10" rx="2" class="f-sun s-teal s-thin"></rect>
+    <path d="M164 196V256M180 196V256M220 196V256M236 196V256" class="ink ink--thin"></path>
+    <path d="M184 292V262A16 16 0 0 1 216 262V292Z" class="f-teal"></path>
+    <rect x="166" y="120" width="68" height="50" class="f-sun-tint s-teal"></rect>
+    <path d={archWindow(192, 132, 16, 28)} class="f-lilac s-teal s-thin"></path>
+    <rect x="162" y="114" width="76" height="8" rx="2" class="f-sun s-teal s-thin"></rect>
+    <rect x="174" y="80" width="52" height="34" class="f-sun-tint s-teal"></rect>
+    <circle cx="200" cy="97" r="13" class="f-paper s-teal"></circle>
+    <path d="M200 97V88M200 97H207" class="ink ink--thin"></path>
+    <rect x="170" y="74" width="60" height="8" rx="2" class="f-sun s-teal s-thin"></rect>
+    <rect x="182" y="52" width="36" height="22" class="f-sun-tint s-teal"></rect>
+    <path d="M191 56V74M200 56V74M209 56V74" class="ink ink--thin"></path>
+    <path d="M178 52Q200 16 222 52Z" class="f-sun s-teal"></path>
+    <path d="M200 30V14" class="ink"></path>
+    <circle cx="200" cy="11" r="3.5" class="f-teal"></circle>
+  </g>
+  <g slot="notes">
+    <path d="M200 4V308" class="ink ink--thin ink--dash fade" style="--d:.2s"></path>
+    <text x="16" y="34" class="hand fade" font-size="23" style="--d:.4s">line of symmetry</text>
+    <path d="M122 42C152 44 174 52 192 64" class="ink ink--thin draw" pathLength="1" style="--d:.6s"></path>
+    <path d="M182 64l10 1-4-9" class="ink ink--thin fade" style="--d:1.2s"></path>
+
+    <path d="M212 90L288 58M212 104L288 112" class="ink ink--thin ink--dash fade" style="--d:.8s"></path>
+    <circle cx="320" cy="84" r="34" class="f-paper ink fade" style="--d:.9s"></circle>
+    <path d="M320 52v6M352 84h-6M320 116v-6M288 84h6" class="ink ink--thin fade" style="--d:1s"></path>
+    <path d="M320 84V62" class="ink draw" pathLength="1" style="--d:1.2s;stroke-width:3"></path>
+    <path d="M320 84H339" class="ink draw" pathLength="1" style="--d:1.4s;stroke-width:3.5"></path>
+    <path d="M320 73A11 11 0 0 1 331 84" class="ink ink--thin ink--accent draw" pathLength="1" style="--d:1.7s"></path>
+    <text x="331" y="74" class="hand hand--accent fade" font-size="17" style="--d:1.9s">90°</text>
+    <circle cx="320" cy="84" r="3" class="f-teal fade" style="--d:1s"></circle>
+
+    <text x="392" y="144" text-anchor="end" class="hand fade" font-size="22" style="--d:2s">3 o’clock = 90°</text>
+    <text x="392" y="166" text-anchor="end" class="hand hand--accent fade" font-size="18" style="--d:2.2s">the minute hand turns</text>
+    <text x="392" y="185" text-anchor="end" class="hand hand--accent fade" font-size="18" style="--d:2.3s">6° every minute</text>
+
+    <text x="14" y="313" class="hand fade" font-size="19" style="--d:.3s">Stockport Town Hall</text>
+  </g>
+</Sketch>

@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/sections/Hero.astro';
+import Confidence from '../components/sections/Confidence.astro';
+import WhoIHelp from '../components/sections/WhoIHelp.astro';
+import Mentor from '../components/sections/Mentor.astro';
+import AroundStockport from '../components/sections/AroundStockport.astro';
+import MeetEmma from '../components/sections/MeetEmma.astro';
+import HowItWorks from '../components/sections/HowItWorks.astro';
+import Sessions from '../components/sections/Sessions.astro';
+import Faqs from '../components/sections/Faqs.astro';
+import Enquiry from '../components/sections/Enquiry.astro';
+import { site } from '../site.config';
+import { faqs } from '../data/faqs';
+import { url } from '../lib/url';
+
+const home = new URL(url('/'), Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${home}#business`,
+      name: site.name,
+      description: site.description,
+      url: home,
+      image: new URL(url('/og-image.png'), Astro.site).href,
+      slogan: site.strapline,
+      priceRange: `£${site.price} per hour`,
+      founder: { '@type': 'Person', name: site.owner },
+      areaServed: { '@type': 'City', name: site.locality },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.locality,
+        addressRegion: site.region,
+        addressCountry: 'GB',
+      },
+      ...(site.emailConfirmed ? { email: site.email } : {}),
+      makesOffer: {
+        '@type': 'Offer',
+        name: 'One-to-one maths mentoring',
+        description: 'Foundational maths and Key Stage 3 (Years 7, 8 and 9) support, in person in Stockport.',
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: site.price,
+          priceCurrency: 'GBP',
+          unitCode: 'HUR',
+          unitText: 'hour',
+        },
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${home}#website`,
+      name: site.name,
+      url: home,
+      inLanguage: 'en-GB',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    },
+  ],
+};
+---
+
+<Base>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  <Hero />
+  <Confidence />
+  <WhoIHelp />
+  <Mentor />
+  <AroundStockport />
+  <MeetEmma />
+  <HowItWorks />
+  <Sessions />
+  <Faqs />
+  <Enquiry />
+</Base>

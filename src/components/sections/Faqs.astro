@@ -1,0 +1,29 @@
+---
+import { faqs } from '../../data/faqs';
+import { url } from '../../lib/url';
+---
+
+<section class="section" id="faqs" aria-labelledby="faqs-title">
+  <div class="container faq-layout">
+    <div class="faq-intro" data-reveal>
+      <span class="kicker">Good questions</span>
+      <h2 id="faqs-title">Frequently asked questions</h2>
+      <p>Can’t see your question here? <a href={url('/#enquire')}>Get in touch</a> and ask me anything.</p>
+    </div>
+    <div class="faqs" data-reveal style="--rd:.1s">
+      {
+        faqs.map((faq) => (
+          <details class="faq" name="faq">
+            <summary>
+              {faq.q}
+              <span class="faq__icon" aria-hidden="true" />
+            </summary>
+            <div class="faq__answer">
+              <p>{faq.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import { url } from '../lib/url';
+
+const links = [
+  { href: url('/#who'), label: 'Who I help' },
+  { href: url('/#emma'), label: 'Meet Emma' },
+  { href: url('/#how'), label: 'How it works' },
+  { href: url('/#sessions'), label: 'Sessions' },
+  { href: url('/#faqs'), label: 'FAQs' },
+];
+---
+
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="wordmark" href={url('/')} aria-label="My Maths Mentor home">my <span>maths</span> mentor</a>
+    <nav class="nav" aria-label="Main" data-nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="menu-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+      <ul id="site-nav" class="nav__list">
+        {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+        <li class="nav__cta"><a class="btn btn--sm" href={url('/#enquire')}>Let’s have a chat</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

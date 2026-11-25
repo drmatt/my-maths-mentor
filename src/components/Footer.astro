@@ -1,0 +1,30 @@
+---
+import { site } from '../site.config';
+import { url } from '../lib/url';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer on-dark">
+  <div class="container footer-grid">
+    <div>
+      <a class="wordmark" href={url('/')} aria-label="My Maths Mentor home">my <span>maths</span> mentor</a>
+      <p class="footer-strap">{site.strapline}</p>
+      <p class="footer-about">
+        Patient, personal maths mentoring in {site.locality}.<br />
+        Years 7, 8 &amp; 9 · Foundation maths · Home education
+      </p>
+    </div>
+    <nav aria-label="Footer">
+      <ul class="footer-links">
+        <li><a href={url('/#enquire')}>Let’s have a chat</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={url('/privacy/')}>Privacy notice</a></li>
+        <li><a href={url('/safeguarding/')}>Safeguarding</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {year} {site.name}. Sessions take place in {site.locality}; the address is shared privately when sessions are arranged.</p>
+  </div>
+</footer>

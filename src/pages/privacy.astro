@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import ToConfirm from '../components/ToConfirm.astro';
+import { site } from '../site.config';
+import { url } from '../lib/url';
+---
+
+<Base title={`Privacy notice | ${site.name}`} description="How My Maths Mentor uses the personal information you share through this website.">
+  <section class="page-hero">
+    <div class="container container--narrow">
+      <span class="kicker">Your information</span>
+      <h1>Privacy notice</h1>
+    </div>
+  </section>
+  <div class="container container--narrow prose">
+    <ToConfirm>
+      <p>
+        This is a draft privacy notice. Have it checked, fill in the items marked below and add the date it takes
+        effect before launch.
+      </p>
+    </ToConfirm>
+
+    <p class="lede">
+      This notice explains what personal information My Maths Mentor collects when you use this website or get in
+      touch, and how it’s used.
+    </p>
+
+    <h2>Who we are</h2>
+    <p>
+      My Maths Mentor is a maths mentoring service run by {site.owner} in {site.locality}. {site.owner} is responsible
+      for the personal information described here. You can get in touch at
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <ToConfirm>
+      <p>Check whether My Maths Mentor needs to pay the ICO data protection fee, and add the registration number here if so.</p>
+    </ToConfirm>
+
+    <h2>What we collect</h2>
+    <p>When you send an enquiry through the form, we receive:</p>
+    <ul>
+      <li>your name and email address</li>
+      <li>your child’s school year or stage</li>
+      <li>your preferred days and times, if you give them</li>
+      <li>anything you write in your message</li>
+    </ul>
+    <p>
+      We ask you not to include your child’s full name, date of birth or medical details in the form. If you email us
+      directly, we receive your email address and whatever your email contains.
+    </p>
+
+    <h2>How we use it</h2>
+    <p>
+      We use your information to reply to your enquiry and, if you decide to go ahead, to arrange sessions. We don’t
+      sell it or share it for marketing.
+    </p>
+    <p>
+      Under UK data protection law, we rely on our legitimate interest in responding to enquiries, and on taking steps
+      you’ve asked for before arranging sessions.
+    </p>
+
+    <h2>Who else handles it</h2>
+    <ul>
+      <li>
+        <strong>Formspree</strong> receives enquiry form submissions and passes them to us by email. Formspree is based
+        in the United States. See <a href="https://formspree.io/legal/privacy-policy/">Formspree’s privacy policy</a>.
+      </li>
+      <li>
+        <strong>GitHub Pages</strong> hosts this website. GitHub records visitors’ IP addresses for security purposes.
+        See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>.
+      </li>
+    </ul>
+    <ToConfirm>
+      <p>Name the email provider used for {site.email} once it’s set up.</p>
+    </ToConfirm>
+
+    <h2>How long we keep it</h2>
+    <ToConfirm>
+      <p>Decide how long enquiries are kept, for example deleting enquiries that don’t lead to sessions after a set number of months.</p>
+    </ToConfirm>
+
+    <h2>Cookies and tracking</h2>
+    <p>
+      This website doesn’t use cookies, analytics or advertising trackers. The fonts are served from this website
+      itself, so viewing a page doesn’t share your details with a font provider.
+    </p>
+
+    <h2>Your rights</h2>
+    <p>
+      You can ask to see the information we hold about you, ask us to correct or delete it, or object to how we use it.
+      Email <a href={`mailto:${site.email}`}>{site.email}</a> and we’ll respond within one month.
+    </p>
+    <p>
+      If you’re unhappy with how we’ve handled your information, you can complain to the Information Commissioner’s
+      Office at <a href="https://ico.org.uk/">ico.org.uk</a>.
+    </p>
+
+    <p><a href={url('/')}>Back to the home page</a></p>
+  </div>
+</Base>

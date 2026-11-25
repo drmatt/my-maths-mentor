@@ -1,0 +1,31 @@
+---
+const steps = [
+  { label: 'Understand', h: 34, c: 'var(--sun)' },
+  { label: 'Practise', h: 56, c: 'var(--coral)' },
+  { label: 'Succeed', h: 78, c: 'var(--lilac)' },
+  { label: 'Believe', h: 100, c: 'var(--cream)' },
+];
+---
+
+<section class="section section--teal on-dark mentor" id="mentor" aria-labelledby="mentor-title">
+  <div class="container split split--even split--center">
+    <div data-reveal>
+      <span class="kicker">Small steps, strong foundations, lasting confidence</span>
+      <h2 id="mentor-title">A mentor, not just a tutor</h2>
+      <p>
+        My aim isn’t simply to help your child answer the next maths question. It’s to help them understand how to
+        approach it, believe they can solve it and develop the confidence to try the next one independently.
+      </p>
+      <p>
+        Together, we’ll build understanding from the ground up, celebrate small successes and develop skills that will
+        stay with them long after our sessions.
+      </p>
+    </div>
+    <div data-reveal style="--rd:.1s">
+      <p class="stairs-note" aria-hidden="true">one step at a time</p>
+      <ol class="stairs" aria-label="The mentoring journey">
+        {steps.map((step, i) => <li style={`--h:${step.h};--c:${step.c};--i:${i}`}>{step.label}</li>)}
+      </ol>
+    </div>
+  </div>
+</section>

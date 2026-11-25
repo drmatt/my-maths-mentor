@@ -1,0 +1,39 @@
+---
+import TownHall from '../sketches/TownHall.astro';
+import MarketHall from '../sketches/MarketHall.astro';
+import Mersey from '../sketches/Mersey.astro';
+---
+
+<section class="section" id="stockport" aria-labelledby="stockport-title">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="kicker">Look closer</span>
+      <h2 id="stockport-title">Maths is all around Stockport</h2>
+      <p>
+        Maths isn’t only found in textbooks. It’s in the curve of the viaduct, the hands of the Town Hall clock and the
+        triangles holding up the Market Hall roof. Spotting it in familiar places helps maths feel real, and a lot less
+        daunting.
+      </p>
+    </div>
+    <ul class="landmarks">
+      <li class="landmark" data-reveal>
+        <TownHall />
+        <span class="landmark__topic">Angles and symmetry</span>
+        <h3>Stockport Town Hall</h3>
+        <p>At 3 o’clock the clock’s hands make a right angle, and the minute hand turns 6° every minute.</p>
+      </li>
+      <li class="landmark" data-reveal style="--rd:.1s">
+        <MarketHall />
+        <span class="landmark__topic">Triangles and structure</span>
+        <h3>Stockport Market Hall</h3>
+        <p>Triangles keep a roof rigid, and the three angles inside every triangle always add up to 180°.</p>
+      </li>
+      <li class="landmark" data-reveal style="--rd:.2s">
+        <Mersey />
+        <span class="landmark__topic">Distance and scale</span>
+        <h3>The River Mersey</h3>
+        <p>The Mersey begins in Stockport, where the Goyt and the Tame meet. On a 1 : 25 000 map, 4 cm stands for 1 km.</p>
+      </li>
+    </ul>
+  </div>
+</section>

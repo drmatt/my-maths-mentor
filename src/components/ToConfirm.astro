@@ -1,0 +1,32 @@
+---
+import { site } from '../site.config';
+
+interface Props {
+  /** "block" for a note in the page flow, "tag" for a small label on an image. */
+  variant?: 'block' | 'tag';
+}
+
+const { variant = 'block' } = Astro.props;
+
+// Safety net: a launch build (draft: false) must not contain unresolved items.
+if (!site.draft) {
+  throw new Error(
+    `A "To confirm" note is still on ${Astro.url.pathname}. Resolve it (or keep draft: true in src/site.config.ts) before launching.`,
+  );
+}
+---
+
+{
+  variant === 'tag' ? (
+    <p class="to-confirm to-confirm--tag">
+      <span class="to-confirm__label">To confirm:</span> <slot />
+    </p>
+  ) : (
+    <div class="to-confirm" role="note">
+      <span class="to-confirm__label">To confirm before launch</span>
+      <div>
+        <slot />
+      </div>
+    </div>
+  )
+}

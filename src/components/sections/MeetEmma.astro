@@ -1,0 +1,62 @@
+---
+import { Picture } from 'astro:assets';
+import { photo } from '../../lib/photos';
+import ToConfirm from '../ToConfirm.astro';
+
+const portrait = photo('emma');
+---
+
+<section class="section section--sun section--grid" id="emma" aria-labelledby="emma-title">
+  <div class="container emma">
+    <div class="portrait-wrap" data-reveal>
+      <figure class="portrait">
+        {
+          portrait ? (
+            <Picture
+              src={portrait}
+              alt="Emma Ryan, founder of My Maths Mentor"
+              formats={['avif', 'webp']}
+              widths={[400, 640, 900]}
+              sizes="(min-width: 56rem) 26rem, 90vw"
+            />
+          ) : (
+            <div class="portrait__placeholder graph" aria-hidden="true">
+              <svg viewBox="0 0 120 120" focusable="false">
+                <circle cx="60" cy="44" r="22" fill="#F6CD58" stroke="#244B52" stroke-width="3" />
+                <path d="M20 112c4-26 20-40 40-40s36 14 40 40" fill="#B5A5E4" stroke="#244B52" stroke-width="3" stroke-linejoin="round" />
+              </svg>
+              <span>Emma’s photo</span>
+            </div>
+          )
+        }
+      </figure>
+      {!portrait && <ToConfirm variant="tag">a relaxed portrait of Emma</ToConfirm>}
+    </div>
+    <div data-reveal style="--rd:.1s">
+      <span class="kicker">Hello!</span>
+      <h2 id="emma-title">Meet Emma</h2>
+      <p class="lede">
+        Hello, I’m Emma. I’m an engineering lecturer in further education, with a degree in Mechanical Engineering and
+        a lifelong passion for helping young people reach their potential.
+      </p>
+      <p>
+        Maths has always been a part of my life, but what I really love is helping someone understand something they
+        previously thought was beyond them.
+      </p>
+      <p>
+        I believe that every child deserves the opportunity to experience success in maths. Sometimes that means taking
+        a different approach, slowing things down or finding a way of explaining something that makes sense to them.
+      </p>
+      <p>
+        That’s why I created My Maths Mentor: a supportive space where children can build their confidence, develop
+        their understanding and learn at their own pace.
+      </p>
+      <p class="signature" aria-hidden="true">Emma</p>
+      <ul class="facts" aria-label="About Emma">
+        <li>Engineering lecturer in further education</li>
+        <li>Degree in Mechanical Engineering</li>
+        <li>Based in Stockport</li>
+      </ul>
+    </div>
+  </div>
+</section>
