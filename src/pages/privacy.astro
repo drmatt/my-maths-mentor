@@ -13,13 +13,6 @@ import { url } from '../lib/url';
     </div>
   </section>
   <div class="container container--narrow prose">
-    <ToConfirm>
-      <p>
-        This is a draft privacy notice. Have it checked, fill in the items marked below and add the date it takes
-        effect before launch.
-      </p>
-    </ToConfirm>
-
     <p class="lede">
       This notice explains what personal information My Maths Mentor collects when you use this website or get in
       touch, and how it’s used.
@@ -28,7 +21,7 @@ import { url } from '../lib/url';
     <h2>Who we are</h2>
     <p>
       My Maths Mentor is a maths mentoring service run by {site.owner} in {site.locality}. {site.owner} is responsible
-      for the personal information described here. You can get in touch at
+      for the personal information described here. You can get in touch at{' '}
       <a href={`mailto:${site.email}`}>{site.email}</a>.
     </p>
     <ToConfirm>
@@ -74,9 +67,7 @@ import { url } from '../lib/url';
     </ToConfirm>
 
     <h2>How long we keep it</h2>
-    <ToConfirm>
-      <p>Decide how long enquiries are kept, for example deleting enquiries that don’t lead to sessions after a set number of months.</p>
-    </ToConfirm>
+    <p>Enquiries that don’t lead to sessions are deleted after 6 months.</p>
 
     <h2>Cookies and tracking</h2>
     <p>
@@ -93,6 +84,10 @@ import { url } from '../lib/url';
       If you’re unhappy with how we’ve handled your information, you can complain to the Information Commissioner’s
       Office at <a href="https://ico.org.uk/">ico.org.uk</a>.
     </p>
+
+    <ToConfirm>
+      <p>Add the date this notice takes effect (the launch date), for example “This notice was last updated on …”.</p>
+    </ToConfirm>
 
     <p><a href={url('/')}>Back to the home page</a></p>
   </div>

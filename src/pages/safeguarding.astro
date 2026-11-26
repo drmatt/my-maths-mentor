@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import ToConfirm from '../components/ToConfirm.astro';
 import { site } from '../site.config';
 import { url } from '../lib/url';
 ---
@@ -13,13 +12,6 @@ import { url } from '../lib/url';
     </div>
   </section>
   <div class="container container--narrow prose">
-    <ToConfirm>
-      <p>
-        This page is a framework only. Every arrangement below needs confirming, and only checks that have been verified
-        should be published.
-      </p>
-    </ToConfirm>
-
     <p class="lede">
       Your child’s safety and wellbeing come first. This page explains how sessions are arranged and what you can
       expect.
@@ -31,24 +23,17 @@ import { url } from '../lib/url';
       with parents and carers when sessions are arranged, and is never published online.
     </p>
 
-    <h2>Checks and background</h2>
-    <p>
-      {site.owner} is an engineering lecturer in further education, with a degree in Mechanical Engineering.
-    </p>
-    <ToConfirm>
-      <p>DBS check: the type of check, when it was issued and whether it’s on the DBS Update Service.</p>
-    </ToConfirm>
-    <ToConfirm>
-      <p>Insurance: whether public liability (and any professional) insurance is in place.</p>
-    </ToConfirm>
-
     <h2>Parents and carers</h2>
-    <ToConfirm>
-      <p>
-        Whether a parent or carer stays during sessions or nearby, how drop-off and collection work, and what happens if
-        a child is unwell or upset during a session.
-      </p>
-    </ToConfirm>
+    <p>
+      You’re welcome to stay at the house during sessions, or to drop your child off and collect them at the end,
+      whichever suits you and your child best.
+    </p>
+
+    <h2>Emma’s background</h2>
+    <p>
+      {site.owner} is an engineering lecturer in further education, with a degree in Mechanical Engineering, and has
+      completed safeguarding training as part of that role.
+    </p>
 
     <h2>Photos and personal information</h2>
     <p>
@@ -57,12 +42,10 @@ import { url } from '../lib/url';
     </p>
 
     <h2>Raising a concern</h2>
-    <ToConfirm>
-      <p>
-        How parents can raise a concern, the safeguarding training {site.owner} has completed, and how a concern about a
-        child would be reported.
-      </p>
-    </ToConfirm>
+    <p>
+      If you have any concern about your child’s safety or wellbeing, please talk to {site.owner} or email{' '}
+      <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
     <p>If you think a child is in immediate danger, call 999.</p>
 
     <p><a href={url('/')}>Back to the home page</a></p>

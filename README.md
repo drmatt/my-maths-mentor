@@ -73,24 +73,27 @@ JavaScript. It deliberately doesn't ask for a child's name, date of birth or med
 
 ## Launch checklist
 
-From the brief's outstanding decisions. Tick these off before setting `draft: false`.
+Confirmed on 25 November 2026: the wording, design (palette, fonts, strapline “Confidence counts.”) and the lowercase
+text wordmark are approved; the landmark illustrations stay; parents can stay or drop off; concerns go to Emma, who
+has safeguarding training through the FE lecturing role; enquiries that don't lead to sessions are deleted after 6 months.
 
-- [ ] Approve the wording, colours, fonts and strapline (all still draft in the brief)
-- [ ] DBS check details, verified, for the safeguarding page
-- [ ] Safeguarding arrangements: who stays during sessions, drop-off and collection, raising a concern
-- [ ] Insurance
-- [ ] Cancellation policy (not on the site yet; add to Sessions or the FAQs once decided)
-- [ ] Session availability
-- [ ] Privacy notice reviewed: ICO fee, email provider, how long enquiries are kept, date it takes effect
-- [ ] Email address set up; then set `emailConfirmed: true`
-- [ ] Formspree connected and tested end to end
-- [ ] Photos: a relaxed portrait of Emma, and landmark photos with the rights to use them (or decide to keep the
-      illustrations and remove their `todo` tags)
-- [ ] If the viaduct becomes a photo, check the real arch shape before showing the circle equation on it
-- [ ] Logo: the lowercase wordmark and the favicon are placeholders, as no logo is on record yet
-- [ ] Set `draft: false`, build, deploy
-- [ ] Check on a phone, keyboard-only navigation, form success and error states, the `.com` redirect, the share
-      preview, then submit `https://mymathsmentor.co.uk/sitemap.xml` in Google Search Console
+Still to do before setting `draft: false` (each one is a “To confirm” note on the site):
+
+- [ ] Set up `emma@mymathsmentor.co.uk`, then set `emailConfirmed: true` in `src/site.config.ts`
+- [ ] Create the Formspree form and add its ID to `src/site.config.ts`, then send a test enquiry
+- [ ] Add a relaxed portrait of Emma as `src/assets/photos/emma.jpg`
+- [ ] Privacy notice: check the ICO data protection fee (ICO self-assessment) and add the registration number if needed
+- [ ] Privacy notice: name the email provider once chosen
+- [ ] Privacy notice: add the date it takes effect
+- [ ] Connect `mymathsmentor.co.uk` (see “Deploy to GitHub Pages”) and forward the `.com`
+- [ ] Set `draft: false`, build, push, then check on a phone, the form, the share preview, and submit
+      `https://mymathsmentor.co.uk/sitemap.xml` in Google Search Console
+
+Left off the site for now, by choice. Add them when they're in place:
+
+- DBS check (none yet). Only publish it once the certificate is through.
+- Insurance (not arranged yet)
+- Cancellation policy (agreed with each family directly)
 
 ## Notes
 
