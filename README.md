@@ -81,7 +81,7 @@ Still to do before setting `draft: false` (each one is a “To confirm” note o
 
 - [ ] Set up `emma@mymathsmentor.co.uk`, then set `emailConfirmed: true` in `src/site.config.ts`
 - [ ] Create the Formspree form and add its ID to `src/site.config.ts`, then send a test enquiry
-- [ ] Add a relaxed portrait of Emma as `src/assets/photos/emma.jpg`
+- [x] Portrait of Emma added as `src/assets/photos/emma.jpg` (26 November 2026)
 - [ ] Privacy notice: check the ICO data protection fee (ICO self-assessment) and add the registration number if needed
 - [ ] Privacy notice: name the email provider once chosen
 - [ ] Privacy notice: add the date it takes effect
